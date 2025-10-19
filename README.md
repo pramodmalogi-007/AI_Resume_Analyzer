@@ -95,18 +95,18 @@ The application will automatically connect to your MySQL database and create the
 
 📂 Project Structure
 AI_Resume_Analyzer/
-├── app.py                      # Main Flask application file (Routes, Models, Logic)
-├── static/                     # Static files (CSS, images, etc.)
-│   └── style.css               # Contains the animated glowing styles
-├── templates/                  # Jinja2 HTML files
-│   ├── index.html              # Main resume upload page
-│   ├── login.html              # Login page
-│   ├── register.html           # Registration page
-│   └── result.html             # Analysis results page
-├── uploads/                    # Uploaded resume files (ignored by Git)
-├── generated_reports/          # Generated PDF reports (ignored by Git)
-├── requirements.txt            # Project dependencies
-└── README.md                   # This file
+├── app.py             # Main Flask application file (Routes, Models, Logic)
+├── static/            # Static files (CSS, images, etc.)
+│   └── style.css      # Contains the animated glowing styles
+├── templates/         # Jinja2 HTML files
+│   ├── index.html     # Main resume upload page
+│   ├── login.html     # Login page
+│   ├── register.html  # Registration page
+│   └── result.html    # Analysis results page
+├── uploads/           # Uploaded resume files (ignored by Git)
+├── generated_reports/ # Generated PDF reports (ignored by Git)
+├── requirements.txt   # Project dependencies
+└── README.md          # This file
 🤝 Contribution
 If you have suggestions for new job roles, more advanced skill extraction, or performance improvements, please open an issue or submit a pull request!
 
