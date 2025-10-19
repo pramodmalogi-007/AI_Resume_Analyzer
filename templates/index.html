@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI Resume Analyzer</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+        }
+        
+        .glow-wrapper {
+            padding: 4px;
+            border-radius: 20px;
+            background: linear-gradient(120deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 300%;
+            animation: borderFlow 6s linear infinite;
+        }
+        
+        @keyframes borderFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .container {
+            background: #111;
+            border-radius: 15px;
+            padding: 25px 30px;
+            width: 360px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 1.4rem;
+            color: #00eaff;
+            margin: 5px 0 15px;
+        }
+        
+        p {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+        
+        .flash-msg {
+            background: rgba(255, 255, 255, 0.08);
+            border-left: 3px solid #00eaff;
+            border-radius: 10px;
+            padding: 8px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            color: #fffb00;
+        }
+        
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 10px;
+            border: none;
+            background: #1b1b1b;
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        
+        button,
+        .btn {
+            background: linear-gradient(90deg, #00c3ff, #0072ff);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 10px #0072ff;
+            margin: 5px;
+        }
+        
+        button:hover,
+        .btn:hover {
+            box-shadow: 0 0 20px #00c3ff, 0 0 40px #0072ff;
+            transform: scale(1.05);
+        }
+        
+        .note {
+            font-size: 0.75rem;
+            color: #aaa;
+            margin-top: 10px;
+        }
+        
+        .username {
+            font-size: 0.9rem;
+            color: #0ff;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glow-wrapper">
+        <div class="container">
+            <h1>🤖 AI Resume Analyzer</h1>
+
+            {% if current_user.is_authenticated %}
+            <p class="username">Welcome, {{ current_user.username }} 👋</p>
+            <p>Upload your resume (PDF) to analyze your skills and get job match insights.</p>
+
+            {% with messages = get_flashed_messages() %} {% if messages %}
+            <div class="flash-msg">
+                {% for msg in messages %}
+                <p>{{ msg }}</p>
+                {% endfor %}
+            </div>
+            {% endif %} {% endwith %}
+
+            <form action="{{ url_for('analyze') }}" method="POST" enctype="multipart/form-data">
+                <input type="file" name="resume" accept=".pdf" required>
+                <button type="submit">📤 Analyze Resume</button>
+            </form>
+
+            <a href="{{ url_for('logout') }}" class="btn">🚪 Logout</a> {% else %}
+            <p>Please log in or register to start analyzing your resume.</p>
+            <a href="{{ url_for('login') }}" class="btn">🔑 Login</a>
+            <a href="{{ url_for('register') }}" class="btn">📝 Register</a> {% endif %}
+
+            <p class="note">Powered by Flask • AI Smart Analysis</p>
+        </div>
+    </div>
+</body>
+
+</html>

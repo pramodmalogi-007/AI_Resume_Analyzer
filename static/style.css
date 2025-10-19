@@ -1,0 +1,167 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
+.glow-wrapper {
+    position: relative;
+    padding: 5px;
+    /* thickness of outer glowing border */
+    border-radius: 25px;
+    background: linear-gradient(120deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background-size: 300%;
+    animation: borderFlow 6s linear infinite;
+}
+
+@keyframes borderFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    background: #111;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    width: 400px;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: #00eaff;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+input[type="file"] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #00c3ff;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input[type="file"]:hover {
+    border-color: #00eaff;
+    box-shadow: 0 0 10px #00eaff;
+}
+
+button {
+    background: linear-gradient(90deg, #00c3ff, #0072ff);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.4s ease;
+    box-shadow: 0 0 10px #0072ff;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #0072ff, #00c3ff);
+    box-shadow: 0 0 25px #00c3ff, 0 0 50px #0072ff;
+    transform: scale(1.05);
+}
+
+
+/* =========================================
+   New Styles for Login Input Fields (Username & Password)
+   ========================================= */
+
+
+/* Apply styling to both text and password inputs */
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    /* Use your existing container width minus padding */
+    box-sizing: border-box;
+    /* Include padding/border in element's total width/height */
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #00c3ff;
+    /* Light blue border to match theme */
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    /* Very subtle transparent background */
+    color: #fff;
+    /* White text */
+    transition: 0.3s;
+}
+
+
+/* Match the hover/focus effect from your file input */
+
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    /* Remove default focus outline */
+    border-color: #00eaff;
+    /* Brighter border */
+    box-shadow: 0 0 10px #00eaff;
+    /* Matching glow effect */
+}
+
+
+/* =========================================
+   Existing H2/Label Styles (Recommended)
+   ========================================= */
+
+
+/* You may need to add/adjust the H2 and Label styles
+   to ensure they look good on your dark theme */
+
+.container h2 {
+    font-size: 1.8rem;
+    color: #00eaff;
+    /* Match the H1 color */
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #ccc;
+    /* Lighter white for text */
+}
+
+
+/* =========================================
+   Optional: Style for Flash Messages
+   ========================================= */
+
+.flash-messages li {
+    list-style-type: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #ff000033;
+    /* Light transparent red for errors */
+    color: #ff0000;
+}
+
+</style></head><body><div class="glow-wrapper"><div class="container"><h1>⚡ AI Résumé Analyzer ⚡</h1><form action="/analyze" method="POST" enctype="multipart/form-data"><input type="file" name="resume" required><button type="submit">Analyze Resume</button></form></div></div></body>

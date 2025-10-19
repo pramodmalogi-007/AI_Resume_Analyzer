@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block content %}
+<h2>📊 Analysis Result</h2>
+
+<h3>🧠 Skills Found:</h3>
+<p>{{ found_skills | join(', ') }}</p>
+
+<h3>💼 Job Matches:</h3>
+<ul style="text-align:left;">
+    {% for job, data in matches.items() %}
+    <li>
+        <strong>{{ job }}</strong> - {{ data['percent'] }}% match
+        <br>Missing Skills: {{ data['missing_skills'] | join(', ') if data['missing_skills'] else 'None' }}
+    </li>
+    {% endfor %}
+</ul>
+
+<br>
+<a href="{{ url_for('download_file', filename=pdf_filename) }}">
+    <button>⬇️ Download Report</button>
+</a>
+
+<br><br>
+<a href="{{ url_for('home') }}">
+    <button>🔁 Analyze Another Resume</button>
+</a>
+
+<p class="note">Powered by Flask • AI Smart Analysis</p>
+{% endblock %}
