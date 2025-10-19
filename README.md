@@ -116,4 +116,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 📧 Contact
 Pramod Maloji- pramodmaloji96@gmail.com
 
-Project Link: [Your GitHub Repo URL]
+Project Link: https://github.com/pramodmalogi-007/AI_Resume_Analyzer
